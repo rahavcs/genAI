@@ -26,10 +26,21 @@ if uploaded_file:
     fixed_chunks = fixed_splitter.split_text(document)
     recursive_chunks = recursive_splitter.split_text(document)
 
-    # Display chunking results
+    # Display chunking summary
     st.header("2. Chunking Summary")
     st.write(f"Fixed-size Chunks: {len(fixed_chunks)}")
     st.write(f"Recursive Chunks: {len(recursive_chunks)}")
+
+    # Display actual chunks
+    with st.expander("📦 View Fixed-size Chunks"):
+        for i, chunk in enumerate(fixed_chunks):
+            st.markdown(f"**Chunk {i+1}:**")
+            st.text(chunk)
+
+    with st.expander("🔁 View Recursive Chunks"):
+        for i, chunk in enumerate(recursive_chunks):
+            st.markdown(f"**Chunk {i+1}:**")
+            st.text(chunk)
 
     # Define queries
     queries = [
@@ -55,7 +66,7 @@ if uploaded_file:
     # Query Results Section
     st.header("3. Query Matching Results")
 
-    with st.expander("View Matched Chunks"):
+    with st.expander("🔍 View Matched Chunks for Queries"):
         for query in queries:
             st.subheader(f"Query: {query}")
             col1, col2 = st.columns(2)
@@ -83,3 +94,4 @@ if uploaded_file:
 
 else:
     st.info("Please upload a `.txt` document to begin.")
+
