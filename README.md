@@ -1,2 +1,0 @@
-# genAI
-chunking and embedding
