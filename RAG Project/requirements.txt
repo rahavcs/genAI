@@ -1,0 +1,6 @@
+langchain
+chromadb
+transformers
+sentence-transformers
+huggingface-hub
+nltk
